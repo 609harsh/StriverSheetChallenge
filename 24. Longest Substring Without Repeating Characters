@@ -1,0 +1,30 @@
+//Coding Ninjas
+
+
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		int i=0,j=0;
+		char c[]=input.toCharArray();
+		int n=c.length;
+		int maxLen=0;
+		HashSet<Character> set=new HashSet<Character>();
+		for(;i<n;i++){
+			while(j<n && set.contains(c[i])){
+				maxLen=Math.max(maxLen,i-j);
+				set.remove(c[j]);
+				j++;
+			}
+			if(!set.contains(c[i]))set.add(c[i]);
+		}
+		maxLen=Math.max(maxLen,i-j);
+		return maxLen;
+	}
+}
+
+
+
+
