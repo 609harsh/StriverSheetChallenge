@@ -1,0 +1,13 @@
+//Coding Ninjas
+
+public class Solution {
+    public static int findIntersection(Node firstHead, Node secondHead) {
+        Node a=firstHead;
+        Node b=secondHead;
+        while(a!=b){
+            a=a==null?secondHead:a.next;
+            b=b==null?firstHead:b.next;
+        }
+        return a.data;
+    }
+}
