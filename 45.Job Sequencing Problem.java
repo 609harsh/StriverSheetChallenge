@@ -15,6 +15,7 @@ public class Solution
                 if(res[j]==false){
                     res[j]=true;
                     ans+=jobs[i][1];
+                    
                     break;
                 }
             }        
