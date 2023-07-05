@@ -1,0 +1,38 @@
+//Coding Ninjas
+
+public class Solution {
+	public static Node getListAfterReverseOperation(Node head, int n, int b[]) {
+		return reverse(head,n,b,0);
+	}
+	static Node reverse(Node head,int n,int[] b,int idx){
+		if(idx>=n)return head;
+
+		Node curr=head;
+		int count=0;
+		while(curr!=null && count!=b[idx]){
+			curr=curr.next;
+			count++;
+		}
+		if(count==b[idx]){
+			curr=reverse(curr,n,b,idx+1);
+			while(count-->0){
+				Node temp=head.next;
+				head.next=curr;
+				curr=head;
+				head=temp;
+			}
+			head=curr;
+		}
+		
+		else{
+			while(count-->0){
+				Node temp=head.next;
+				head.next=curr;
+				curr=head;
+				head=temp;
+			}
+			head=curr;
+		}
+		return head;
+	}
+}
