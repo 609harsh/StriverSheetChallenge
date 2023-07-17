@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static ArrayList<ArrayList<Integer>> ratInAMaze(int[][] maze, int n) {
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        recursion(0,0,maze,n,ans,new int[n][n]);
+        return ans;
+    }
+
+    static void recursion(int i,int j,int[][]maze,int n,ArrayList<ArrayList<Integer>> ans,int[][] arr){
+        if(i<0 || j<0 || i>=n || j>=n)return ;
+        if(arr[i][j]==1)return;
+        if(i==n-1 && j==n-1 && maze[i][j]==1 ){
+            arr[i][j]=1;
+            ArrayList<Integer> list=new ArrayList<>();
+            for(int s=0;s<n;s++){
+                for(int e=0;e<n;e++){
+                    list.add(arr[s][e]);
+                }
+            }
+            arr[i][j]=0;
+            // System.out.println(list);
+            ans.add(list);
+            return ;
+        }
+        if(maze[i][j]==1)
+        {
+            arr[i][j]=1;
+            recursion(i+1,j,maze,n,ans,arr);
+            recursion(i,j+1,maze,n,ans,arr);
+            recursion(i-1,j,maze,n,ans,arr);
+            recursion(i,j-1,maze,n,ans,arr);
+            arr[i][j]=0;
+            return ;
+        }
+        else 
+        return ;
+    }
+}
