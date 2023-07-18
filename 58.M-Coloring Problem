@@ -1,0 +1,34 @@
+public class Solution {
+    public static String graphColoring(int [][]mat, int m) {
+        // Write your code here
+        int visit[]=new int[mat.length];
+        boolean val=recursion(mat,m,visit,0);
+
+        return val?"YES":"NO";
+    }
+    static boolean recursion(int[][] mat,int m,int[] visit,int node){
+        if(node==mat.length)return true;
+        for(int i=1;i<=m;i++){
+            if(isSafe(mat,i,visit,node))
+            {
+                visit[node]=i;
+                if(recursion(mat,m,visit,node+1))return true;
+                visit[node]=0;
+            }
+        }
+        return false;
+    }
+    static boolean isSafe(int[][] mat,int m,int visit[],int node){
+        for(int i=0;i<mat.length;i++){
+            if(mat[node][i]==1 && visit[i]==m)return false;
+        }
+        return true;
+    }
+}
+
+
+// 1
+// 2->6
+// 3->6,10
+// 4->6,7
+// 5->1
