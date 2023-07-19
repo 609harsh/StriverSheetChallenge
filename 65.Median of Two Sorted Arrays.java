@@ -8,6 +8,7 @@ public class Solution {
         else{
             return ((solve(a,b,n/2-1,0,n1-1,0,n2-1)+solve(a,b,n/2,0,n1-1,0,n2-1))*1.0)/2;
         }
+        
     }
     public int solve(int a[],int b[],int k,int aStart,int aEnd,int bStart,int bEnd){
         if(aStart>aEnd)return b[k-aStart];
