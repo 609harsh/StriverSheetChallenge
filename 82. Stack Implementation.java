@@ -1,3 +1,4 @@
+//Coding Ninjas
 public class Solution{
     static class Stack {
         int size;
