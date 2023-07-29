@@ -1,0 +1,13 @@
+public class Solution {
+	public static boolean pairSumBst(BinaryTreeNode root, int k) {
+		// Write your code here.
+		HashSet<Integer> map=new HashSet<>();
+        return preOrder(root,k,map);
+	}
+	static boolean preOrder(BinaryTreeNode root,int k,HashSet<Integer>map){
+        if(root==null)return false;
+        if(map.contains(root.data))return true;
+        map.add(k-root.data);
+        return preOrder(root.left,k,map) || preOrder(root.right, k,map);
+    }
+}
