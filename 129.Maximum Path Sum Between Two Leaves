@@ -1,0 +1,39 @@
+typedef long long int ll;
+
+typedef TreeNode<int> * t;
+
+ll s(t r, ll & ans){
+
+    if(!r){
+
+        return 0;
+
+    }
+
+    ll l=s(r->left, ans);
+
+    ll rr=s(r->right, ans);
+
+    ans=max(ans, r->val+l+rr);
+
+    return r->val+max(l, rr);
+
+}
+
+long long int findMaxSumPath(TreeNode<int> *root)
+
+{
+
+    if(!root or !root->left or !root->right ){
+
+        return -1;
+
+    }
+
+    ll ans=0;
+
+    ll z=s(root, ans);
+
+    return ans;
+
+}
